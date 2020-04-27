@@ -4,31 +4,33 @@ license https://mit-license.org/ MIT
 =end
 
 class Interpreter
-    @@registry = []
+    def initialize
+        @registry = []
+    end
 
-    def addAlbumToRegistry(album)
-        @@registry << album
+    def add_album_to_registry(album)
+        @registry << album
     end
 
     def interpret(input)
         exploded = input.split(' ')
         exploded.each { |item|
             if /\A\d+\z/.match(item)
-                self.getDataFromRegistry(exploded, @@registry[item.to_i - 1])
+                self.get_data_from_registry(exploded, @registry[item.to_i - 1])
             end
         }
     end
 
-    def getDataFromRegistry(exploded, album)
-        output = ''
+    def get_data_from_registry(exploded, album)
+        output = ""
 
         exploded.each { |element|
             if element === "album"
-                output << "#{album.getName()} "
+                output << "#{album.name} "
             end
 
             if element === "author"
-                output << "#{album.getAuthor()}"
+                output << "#{album.author}"
             end
         }
 

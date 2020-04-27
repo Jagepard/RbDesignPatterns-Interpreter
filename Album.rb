@@ -8,11 +8,11 @@ class Album
         @name, @author = name, author
     end
 
-    def getName()
-        return @name;
+    def name
+        @name
     end
 
-    def getAuthor()
-        return @author;
+    def author
+        @author
     end
 end
