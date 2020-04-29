@@ -8,9 +8,14 @@ require "./Interpreter"
 
 interpreter = Interpreter.new
 
-interpreter.add_album_to_registry(Album.new("Untouchables", "Korn"))
-interpreter.add_album_to_registry(Album.new("Adrenaline", "Deftones"))
-interpreter.interpret("album 2")
-interpreter.interpret("album author 2")
-interpreter.interpret("album author 1")
-interpreter.interpret("author 1")
+begin
+  interpreter.add_album_to_registry(Album.new("Untouchables", "Korn"))
+  interpreter.add_album_to_registry(Album.new("Adrenaline", "Deftones"))
+  interpreter.interpret("album 2")
+  interpreter.interpret("album author 2")
+  interpreter.interpret("album author 1")
+  interpreter.interpret("author 1")
+rescue Exception => e
+  puts e.message
+  puts e.backtrace.inspect
+end
